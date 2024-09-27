@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: myservice  # This should match the name of the configuration file (myserver-dev.yml)
+  config:
+    import: configserver:http://localhost:8888
+  cloud:
+    config:
+      uri: http://localhost:8888  # URL of the Config Server
+      fail-fast: true # Optional: fail fast if the config server is not reachable
+      profile: dev
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, refresh, bus

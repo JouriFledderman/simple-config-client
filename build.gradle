@@ -1,0 +1,31 @@
+plugins {
+    id 'org.springframework.boot' version '3.3.3' // Use the latest compatible Spring Boot version
+    id 'io.spring.dependency-management' version '1.1.6'
+    id 'java'
+}
+
+group = 'nl.fledderman'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17' // Specify the Java version you're using
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'  // For RabbitMQ
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2023.0.1" // Use the latest version
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
